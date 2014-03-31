@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+if [ -f /etc/lcremote.conf ]
+then
+    kill -9 `ps aux |grep gesrem |awk {'print $2'}`
+rm /etc/lcremote.conf
+userdel gesrem
+update-rc.d -f lcremote remove
+rm -rf /home/gesrem
+rm /etc/init.d/lcremote
+else
+    echo Instalando dependencias....
+fi
+

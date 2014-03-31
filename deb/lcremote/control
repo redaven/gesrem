@@ -1,0 +1,15 @@
+Package: lcremote
+Version: 1.0
+Installed-Size: 32
+Section: admin
+Maintainer: tuxed <info@redaven.com>
+Homepage: http://www.redaven.com
+Priority: optional
+Architecture: all
+Depends: autossh, openssh-server, sshpass
+Pre-Depends: wget
+Description: RedAven Remote Control
+ RedAven Nat transversal remote 
+
+
+

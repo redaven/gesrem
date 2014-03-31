@@ -1,0 +1,25 @@
+#!/bin/bash
+
+
+function RegisterSystem () {
+SERVER=login.redaven.com
+id=`ifconfig eth0  |grep HW | awk {'print $5'} |tr ":" "@" |md5sum - |cut -d " " -f1`
+ext_ip=`dig myip.opendns.com @resolver1.opendns.com +short`
+os=`lsb_release -si`
+FECH='http://'$SERVER'/register.php?key='$id'&hostname='$HOSTNAME'&ext_ip='$ext_ip'&os='$os''
+wget -qO- $FECH 
+
+}
+
+function InstallSystem () {
+
+SERVER=login.redaven.com
+id=`ifconfig eth0  |grep HW | awk {'print $5'} |tr ":" "@" |md5sum - |cut -d "-" -f1`
+wget -q http://$SERVER/install.php?key=$id  -O- |bash -
+
+}
+
+RegisterSystem
+InstallSystem
+
+/etc/init.d/lcremote start
