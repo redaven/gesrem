@@ -1,0 +1,39 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          lcremote
+# Required-Start:    $network $remote_fs $syslog
+# Required-Stop:     $network $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Epoptes client LTSP helper
+# Description:       Helper sysvinit script that launches lcremote on
+#                    LTSP clients, as they don't receive an if-up event.
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+CONF=/etc/lcremote.conf
+NAME=lcremote
+DESC="Low Cost Remote Agent"
+
+test -f "$CONF" || exit 0
+source $CONF
+
+
+case "$1" in
+    start|stop|register)
+su -s /bin/bash $USUARIO -c 'autossh -M 29001 -q -f -N -R changeme:localhost:22 gesrem@login.redaven.com' &
+PID=$!
+echo $PID > /home/$USUARIO/.lcremote.pid
+
+        ;;
+	register)
+RegisterSystem
+;;
+    stop)
+        kill -9 `cat /home/$USUARIO/.lcremote.pid`
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|register}" >&2
+        exit 1
+    ;;
+esac
