@@ -1,6 +1,6 @@
 <?php
 // Make a MySQL Connection
-mysql_connect("localhost", "gesrem", "lapassdemysql") or die(mysql_error());
+mysql_connect("localhost", "gesrem", "lapassword") or die(mysql_error());
 mysql_select_db("gesrem") or die(mysql_error());
 
 // Get a specific result from the "example" table
