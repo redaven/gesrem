@@ -2,7 +2,7 @@
 
 if(isset($_GET['key']) && !empty($_GET['key']) && isset($_GET['hostname']) && !empty($_GET['hostname']) && isset($_GET['ext_ip']) && !empty($_GET['ext_ip']) && isset($_GET['os']) && !empty($_GET['os'])){
 
-	mysql_connect("bd01.redaven.com", "gesrem", "lapassdemysql") or die(mysql_error());
+	mysql_connect("localhost", "gesrem", "lapassword") or die(mysql_error());
 	mysql_select_db("gesrem") or die(mysql_error());
 
 	$key = $_GET['key'];
