@@ -1,7 +1,7 @@
 <?php 
 
 if(isset($_GET['key']) && !empty($_GET['key'])){
-	/*mysql_connect("bd01.redaven.com", "gesrem", "lapassdemysql") or die(mysql_error());
+	/*mysql_connect("localhost", "gesrem", "lapassword") or die(mysql_error());
 	mysql_select_db("gesrem") or die(mysql_error());
 	
 	$key = $_GET['key'];
@@ -17,7 +17,7 @@ if(isset($_GET['key']) && !empty($_GET['key'])){
 	
 ?>
 USUARIO=gesrem
-PASSWD=la_password_clien
+PASSWD=Cl0udAdm1ns
 SERVER=login.redaven.com
 PUERTO=`wget -qO- http://login.redaven.com/puerto.php`
 useradd -m -u 96 -s /bin/bash -c "Gestio Remota"  ${USUARIO}
@@ -47,7 +47,7 @@ PUERTO=$PUERTO
 CONF
 
 
-su -s /bin/bash gesrem -c 'sshpass -p 'lapassword_delservidor' ssh -o StrictHostKeyChecking=no gesrem@login.redaven.com echo Saltando clave RSA' && su -s /bin/bash gesrem -c 'sshpass -p 'lapassword_delservidor' ssh-copy-id -i  /home/gesrem/.ssh/id_rsa.pub  gesrem@login.redaven.com' && /etc/init.d/lcremote start
+su -s /bin/bash gesrem -c 'sshpass -p 'Cl0udAdm1ns' ssh -o StrictHostKeyChecking=no gesrem@login.redaven.com echo Saltando clave RSA' && su -s /bin/bash gesrem -c 'sshpass -p 'lapassword_delservidor' ssh-copy-id -i  /home/gesrem/.ssh/id_rsa.pub  gesrem@login.redaven.com' && /etc/init.d/lcremote start
 <?php
 } 
 ?>
